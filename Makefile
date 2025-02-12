@@ -6,7 +6,7 @@
 #    By: juhenriq <dev@juliohenrique.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/08 20:51:06 by juhenriq          #+#    #+#              #
-#    Updated: 2025/02/08 21:24:36 by juhenriq         ###   ########.fr        #
+#    Updated: 2025/02/12 16:47:13 by juhenriq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,10 +15,10 @@ NAME = fdf
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
-MLX42_BUILD = 
-
-
-
+MLX42_PATH = ./lib/MLX42
+MLX42_BUILD = $(MLX42_DIR)/build
+MLX42_LIB = $(MLX42_BUILD)/libmlx42.a
+MLX42_LIB_WITH_ITS_FLAGS = $(MLX42_LIB) -ldl -lglfw -pthread -lm
 
 
 
