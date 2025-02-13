@@ -6,7 +6,7 @@
 #    By: juhenriq <dev@juliohenrique.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/08 20:51:06 by juhenriq          #+#    #+#              #
-#    Updated: 2025/02/13 02:03:31 by juhenriq         ###   ########.fr        #
+#    Updated: 2025/02/13 04:41:25 by juhenriq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ LIBFT_LIB = $(LIBFT_PATH)/libft.a
 
 INCLUDES = -I ./FdF -I $(MLX42_PATH)/include -I $(LIBFT_PATH)
 
-SRCS = ./FdF/fdf.c
+SRCS = ./FdF/main.c
 
 OBJS = $(SRCS:.c=.o)
 
@@ -42,7 +42,7 @@ debug: fclean
 	@$(MAKE) DEBUG=1
 
 $(NAME): libmlx $(LIBFT_LIB) $(OBJS)
-	@$(CC) $(CFLAGS) $(MLX42_LIB) $(MLX42_DEPENDENCIES) $(LIBFT_LIB) $(OBJS) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT_LIB) $(MLX42_LIB) $(MLX42_DEPENDENCIES) -o $(NAME)
 
 libmlx:
 	@cmake -DDEBUG=$(DEBUG) $(MLX42_PATH) -B $(MLX42_BUILD)
