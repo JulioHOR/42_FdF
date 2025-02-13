@@ -6,96 +6,67 @@
 #    By: juhenriq <dev@juliohenrique.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/08 20:51:06 by juhenriq          #+#    #+#              #
-#    Updated: 2025/02/12 16:47:13 by juhenriq         ###   ########.fr        #
+#    Updated: 2025/02/13 02:03:31 by juhenriq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fdf
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror # REMOVA DEPOIS FLAG DA LIBFT LÁ DENTRO -Wno-unused-result
 
-MLX42_PATH = ./lib/MLX42
-MLX42_BUILD = $(MLX42_DIR)/build
+DEBUG ?= 0
+ifeq ($(DEBUG), 1)
+    CFLAGS += -g -Og
+else
+    CFLAGS += -Ofast
+endif
+
+MLX42_PATH = ./MLX42
+MLX42_BUILD = $(MLX42_PATH)/build
 MLX42_LIB = $(MLX42_BUILD)/libmlx42.a
-MLX42_LIB_WITH_ITS_FLAGS = $(MLX42_LIB) -ldl -lglfw -pthread -lm
+MLX42_DEPENDENCIES = -ldl -lglfw -pthread -lm
 
+LIBFT_PATH = ./libft
+LIBFT_LIB = $(LIBFT_PATH)/libft.a
 
+INCLUDES = -I ./FdF -I $(MLX42_PATH)/include -I $(LIBFT_PATH)
 
+SRCS = ./FdF/fdf.c
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-###
-
-
-NAME = fdf
-
-CC = cc
-CFLAGS = -Wall -Wextra -Werror
-
-LIBFT_PATH = libft
-LIBFT = $(LIBFT_PATH)/libft.a
-
-# MANDATORY_SRCS = 
-
-# BONUS_SRCS = 
-
-MANDATORY_OBJS = $(MANDATORY_SRCS:.c=.o)
-BONUS_OBJS = $(BONUS_SRCS:.c=.o)
+OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(MANDATORY_OBJS)
-	@$(MAKE) -C $(LIBFT_PATH)
-	cp $(LIBFT) $(NAME)
-	ar rcs $(NAME) $(MANDATORY_OBJS)
+debug: fclean
+	@$(MAKE) DEBUG=1
 
-bonus: clean_bonus $(BONUS_OBJS)
-	@$(MAKE) -C $(LIBFT_PATH)
-	cp $(LIBFT) $(NAME)
-	ar rcs $(NAME) $(BONUS_OBJS)
+$(NAME): libmlx $(LIBFT_LIB) $(OBJS)
+	@$(CC) $(CFLAGS) $(MLX42_LIB) $(MLX42_DEPENDENCIES) $(LIBFT_LIB) $(OBJS) -o $(NAME)
 
-clean_bonus:
-	rm -f $(MANDATORY_OBJS)
+libmlx:
+	@cmake -DDEBUG=$(DEBUG) $(MLX42_PATH) -B $(MLX42_BUILD)
+	@make -C $(MLX42_BUILD) -j4
 
-mandatory/%.o: mandatory/%.c ft_printf.h libft/libft.h
-	$(CC) $(CFLAGS) -c $< -o $@
+$(LIBFT_LIB):
+ifeq ($(DEBUG), 0)
+	@make -C $(LIBFT_PATH) all
+else
+	@make -C $(LIBFT_PATH) debug
+endif
 
-bonus/%.o: bonus/%.c ft_printf_bonus.h libft/libft.h
-	$(CC) $(CFLAGS) -c $< -o $@
+%.o: %.c
+	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
-	rm -f $(MANDATORY_OBJS) $(BONUS_OBJS)
-	@$(MAKE) -C $(LIBFT_PATH) clean
+	@rm -rf $(OBJS)
+	@make clean -C $(LIBFT_PATH)
+	@rm -rf $(MLX42_BUILD)
 
 fclean: clean
 	rm -f $(NAME)
-	@$(MAKE) -C $(LIBFT_PATH) fclean
+	@make fclean -C $(LIBFT_PATH)
 
 re: fclean all
 
-.PHONY: all bonus clean fclean re
+.PHONY: all clean fclean re libmlx debug
