@@ -6,7 +6,7 @@
 #    By: juhenriq <dev@juliohenrique.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/08 20:51:06 by juhenriq          #+#    #+#              #
-#    Updated: 2025/02/13 04:41:25 by juhenriq         ###   ########.fr        #
+#    Updated: 2025/02/20 00:57:25 by juhenriq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CFLAGS = -Wall -Wextra -Werror # REMOVA DEPOIS FLAG DA LIBFT LÁ DENTRO -Wno-unu
 
 DEBUG ?= 0
 ifeq ($(DEBUG), 1)
-    CFLAGS += -g -Og
+    CFLAGS += -g -O0
 else
     CFLAGS += -Ofast
 endif
@@ -38,7 +38,7 @@ OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
-debug: fclean
+debug: # fclean
 	@$(MAKE) DEBUG=1
 
 $(NAME): libmlx $(LIBFT_LIB) $(OBJS)
