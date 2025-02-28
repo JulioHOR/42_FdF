@@ -6,7 +6,7 @@
 /*   By: juhenriq <dev@juliohenrique.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 00:47:16 by juhenriq          #+#    #+#             */
-/*   Updated: 2025/02/19 14:41:58 by juhenriq         ###   ########.fr       */
+/*   Updated: 2025/02/28 01:55:03 by juhenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ static int	check_hex(char *str, int str_len, const char *hex_characters)
 		matches_hex_char = 0;
 		while (++j < 16)
 		{
+			// OI OI REMOVA-ME
+			ft_printf("j é: %d\n", j);
 			if (str[i] == hex_characters[j]
 				|| str[i] == (hex_characters[j] - 32))
 			{
