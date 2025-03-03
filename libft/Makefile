@@ -6,7 +6,7 @@
 #    By: juhenriq <dev@juliohenrique.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 19:42:29 by juhenriq          #+#    #+#              #
-#    Updated: 2025/02/28 01:52:35 by juhenriq         ###   ########.fr        #
+#    Updated: 2025/03/03 02:18:10 by juhenriq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = libft.a
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror -Wno-unused-result
+CFLAGS = -Wall -Wextra -Werror
 
 DEBUG ?= 0
 ifeq ($(DEBUG), 1)

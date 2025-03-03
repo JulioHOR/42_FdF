@@ -6,14 +6,14 @@
 #    By: juhenriq <dev@juliohenrique.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/08 20:51:06 by juhenriq          #+#    #+#              #
-#    Updated: 2025/02/25 00:48:27 by juhenriq         ###   ########.fr        #
+#    Updated: 2025/03/03 02:18:44 by juhenriq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fdf
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror # REMOVA DEPOIS FLAG DA LIBFT LÁ DENTRO -Wno-unused-result
+CFLAGS = -Wall -Wextra -Werror
 
 DEBUG ?= 0
 ifeq ($(DEBUG), 1)
