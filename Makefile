@@ -6,7 +6,7 @@
 #    By: juhenriq <dev@juliohenrique.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/08 20:51:06 by juhenriq          #+#    #+#              #
-#    Updated: 2025/03/05 22:33:41 by juhenriq         ###   ########.fr        #
+#    Updated: 2025/03/06 00:26:57 by juhenriq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ LIBFT_LIB = $(LIBFT_PATH)/libft.a
 
 INCLUDES = -I ./FdF -I $(MLX42_PATH)/include -I $(LIBFT_PATH)
 
-SRCS = ./FdF/main.c ./FdF/line_rendering.c  ./FdF/camera_movement.c ./FdF/keyboard_control.c
+SRCS = ./FdF/main.c ./FdF/line_rendering.c ./FdF/keyboard_control.c
 
 OBJS = $(SRCS:.c=.o)
 
