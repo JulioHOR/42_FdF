@@ -6,7 +6,7 @@
 #    By: juhenriq <dev@juliohenrique.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 19:42:29 by juhenriq          #+#    #+#              #
-#    Updated: 2025/03/03 02:18:10 by juhenriq         ###   ########.fr        #
+#    Updated: 2025/03/10 23:20:12 by juhenriq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ CFLAGS = -Wall -Wextra -Werror
 DEBUG ?= 0
 ifeq ($(DEBUG), 1)
     CFLAGS += -g -O0
-    NAME := $(NAME)
+else
+    CFLAGS += -Ofast
 endif
 
 SRCS = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \

@@ -6,7 +6,7 @@
 #    By: juhenriq <dev@juliohenrique.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/08 20:51:06 by juhenriq          #+#    #+#              #
-#    Updated: 2025/03/06 22:46:23 by juhenriq         ###   ########.fr        #
+#    Updated: 2025/03/10 23:17:32 by juhenriq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,15 +30,17 @@ MLX42_DEPENDENCIES = -ldl -lglfw -pthread -lm
 LIBFT_PATH = ./libft
 LIBFT_LIB = $(LIBFT_PATH)/libft.a
 
-INCLUDES = -I ./FdF -I $(MLX42_PATH)/include -I $(LIBFT_PATH)
+INCLUDES = -I . -I $(MLX42_PATH)/include -I $(LIBFT_PATH)
 
-SRCS = ./FdF/main.c ./FdF/line_rendering.c ./FdF/keyboard_control.c ./FdF/utils.c
+SRCS = keyboard_control.c line_rendering_horizontal.c line_rendering_utils.c \
+		line_rendering_vertical.c  map_get_functions.c line_rendering.c \
+		map_loader.c  map_utils.c utils.c   map_rendering_functions.c main.c 
 
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
-debug: # fclean
+debug: fclean
 	@$(MAKE) DEBUG=1
 
 $(NAME): libmlx $(LIBFT_LIB) $(OBJS)
