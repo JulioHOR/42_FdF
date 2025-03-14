@@ -672,3 +672,8 @@ may consider it more useful to permit linking proprietary applications with
 the library.  If this is what you want to do, use the GNU Lesser General
 Public License instead of this License.  But first, please read
 <https://www.gnu.org/licenses/why-not-lgpl.html>.
+
+Additional Clause on Artificial Intelligence
+This software is licensed under the GNU GPL v3, with the following additional restriction:
+
+    The use of this software, any part of it, or any derivative works for the training, improvement, or fine-tuning of artificial intelligence models is strictly prohibited, unless explicit authorization is granted by the author(s).
